@@ -12,7 +12,6 @@ import Showdown from "./components/Showdown";
 import EWResizer from "./components/EWResizer";
 import Header from "./components/Header";
 
-import defaultProps from "./defaultProps";
 import * as styles from "./index.scss";
 
 const defaultValue = "";
@@ -49,7 +48,7 @@ interface MarkdownMXState {
 	showHeader?: boolean;
 }
 export default class MarkdownMX extends React.Component<MarkdownMXProps, MarkdownMXState> {
-	static defaultProps = { ...defaultProps, className: "" };
+	static defaultProps = { className: "" };
 
 	state: MarkdownMXState = {
 		show: false,
