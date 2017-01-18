@@ -16,7 +16,7 @@ import defaultProps from "./defaultProps";
 import * as styles from "./index.scss";
 
 const defaultValue = "";
-const mdURL = "https://raw.githubusercontent.com/myxvisual/markdown-react/master/README.md";
+const mdURL = "https://raw.githubusercontent.com/myxvisual/markdown-mx/master/README.md";
 const $ = (str: string) => document.querySelector(str);
 const customKey = {
 	bold: { ctrlKey: false, shiftKey: false, altKey: true, keyCode: keycode("b") },
