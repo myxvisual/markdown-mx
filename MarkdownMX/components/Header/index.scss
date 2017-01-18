@@ -1,0 +1,68 @@
+.c {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 20px;
+	overflow: auto;
+
+	&Tool, &Menu {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	&Tool {
+		height: 100%;
+
+		&Items:first-child {
+			border-left: 2px solid transparent;
+		}
+		&Items {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			height: 24px;
+			border-left: 1px solid #3d72ad;
+			padding: 0 10px;
+		}
+	}
+
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+
+	&::-webkit-scrollbar {
+		-webkit-appearance: none
+	}
+
+	&::-webkit-scrollbar:vertical {
+		width: 4px
+	}
+
+	&::-webkit-scrollbar:horizontal {
+		height: 4px
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: rgba(255, 255, 255, 0.52);
+	}
+}
+
+.materialIcons {
+	font-family: Material Icons;
+	user-select: none;
+	cursor: default;
+	font-size: 24px;
+	color: #18222d;
+	cursor: pointer;
+	background: transparent;
+	transition: all .25s 0s ease-in-out;
+	margin: 0 2px;
+
+	&:hover {
+		color: #ebf5ff;
+	}
+
+	&:active {
+		color: #fff;
+	}
+}

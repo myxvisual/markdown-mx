@@ -1,0 +1,137 @@
+.c {
+	$primaryColor: #54a7ff;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+
+	&Header {
+		flex: 0 0 auto;
+		$height: 50px;
+		width: 100%;
+		height: $height;
+		background: $primaryColor;
+
+		> header {
+			flex: 0 0 auto;
+			position: fixed;
+			display: flex;
+			flex-direction: row;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: $height;
+			z-index: 9999;
+			box-shadow: 0rem .25rem .25rem hsla(0, 0%, 0%, .125);
+		}
+	}
+
+	&Editor {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+
+
+		&Codemirror {
+			flex: 0 0 auto;
+			width: 50%;
+			height: 100%;
+		}
+		:global {
+			.CodeMirror {
+				flex: 0 0 auto;
+				width: 50%;
+				height: 100%;
+				font-family: "Microsoft YaHei", "Open Sans", sans-serif, "Hiragino Sans GB", Arial, "Lantinghei SC", "5FAE8F6F96C59ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun;
+			}
+
+			.CodeMirror-wrap pre {
+				font-size: 14px;
+				padding-left: 12px;
+			}
+
+			.CodeMirror-vscrollbar {
+				-ms-overflow-style: -ms-autohiding-scrollbar;
+
+				&::-webkit-scrollbar {
+					-webkit-appearance: none
+				}
+
+				&::-webkit-scrollbar:vertical {
+					width: 7px
+				}
+
+				&::-webkit-scrollbar:horizontal {
+					height: 7px
+				}
+
+				&::-webkit-scrollbar-thumb {
+					background-color: rgba(95, 95, 95, 0.5);
+					border-radius: 4px
+				}
+			}
+
+			.CodeMirror-linenumber {
+				font-size: 12px;
+			}
+
+			.CodeMirror-gutters, .cm-s-liquibyte .CodeMirror-gutters {
+				padding-right: 0;
+			}
+
+			/*.CodeMirror-selected { background-color: rgba(0, 0, 0, 0.19) !important; }
+			.CodeMirror-selectedtext { color: white !important; }*/
+
+			.cm-matchhighlight {
+				background-color: rgba(255, 255, 255, 0.2);
+			}
+			.CodeMirror-selection-highlight-scrollbar {
+				background-color: #54a7ff;
+				height: 5px !important;
+			}
+		}
+
+		&Preview {
+			flex: 1 1 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			width: 50%;
+			height: 100%;
+			overflow-y: auto;
+			overflow-x: hidden;
+			position: relative;
+
+			-ms-overflow-style: -ms-autohiding-scrollbar;
+
+			&::-webkit-scrollbar {
+				-webkit-appearance: none
+			}
+
+			&::-webkit-scrollbar:vertical {
+				width: 7px
+			}
+
+			&::-webkit-scrollbar:horizontal {
+				height: 7px
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background-color: rgba(95, 95, 95, 0.5);
+				border-radius: 4px
+			}
+		}
+	}
+}
+
+body, html {
+	overflow: hidden;
+}
