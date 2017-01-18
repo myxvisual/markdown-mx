@@ -2,7 +2,7 @@
   "name": "markdown-mx",
   "version": "0.0.1",
   "description": "Markdown Editor by React Typescript",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "test": "jest"
   },
