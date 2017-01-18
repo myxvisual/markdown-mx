@@ -1,6 +1,6 @@
 {
   "name": "markdown-mx",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Markdown Editor by React Typescript",
   "main": "index.tsx",
   "scripts": {
