@@ -1,0 +1,61 @@
+{
+  "name": "markdown-mx",
+  "version": "0.0.1",
+  "description": "Markdown Editor by React Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myxvisual/markdown-mx.git"
+  },
+  "keywords": [
+    "markdown",
+    "react",
+    "typescript"
+  ],
+  "author": "myxvisual",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/myxvisual/markdown-mx/issues"
+  },
+  "homepage": "https://antcores.com/markdown-mx",
+  "devDependencies": {
+    "@types/enzyme": "^2.7.1",
+    "@types/jest": "^16.0.3",
+    "@types/node": "^6.0.46",
+    "@types/react": "^0.14.57",
+    "@types/react-addons-test-utils": "^0.14.16",
+    "@types/react-dom": "^0.14.18",
+    "@types/webpack": "^1.12.35",
+    "awesome-typescript-loader": "^3.0.0-beta.9",
+    "cross-env": "^3.1.3",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
+    "husky": "^0.12.0",
+    "jest": "^18.1.0",
+    "npm-run-all": "^3.1.1",
+    "prepush": "^3.1.11",
+    "react-addons-test-utils": "^15.4.1",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "source-map-loader": "^0.1.5",
+    "tslint": "^3.15.1",
+    "tslint-eslint-rules": "^3.2.0",
+    "typescript": "^2.1.5",
+    "uglify-js": "^2.7.5",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3"
+  },
+  "dependencies": {
+    "core-js": "^2.4.1",
+    "keycode": "^2.1.8",
+    "react": "^15.4.2",
+    "react-dom": "^15.3.2",
+    "react-prefixer": "^2.0.0"
+  }
+}
