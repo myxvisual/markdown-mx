@@ -32,7 +32,9 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 	};
 
 	componentWillReceiveProps(nextProps: ShowdownProps) {
-		this.setState({ __html: nextProps.__html });
+		if (nextProps.__html) {
+			this.setState({ __html: nextProps.__html });
+		}
 	}
 
 	renderMD = (data: string) => {

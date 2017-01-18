@@ -193,6 +193,7 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 
 	onChangeTheme = (e: React.SyntheticEvent<HTMLSelectElement>) => {
 		this.setState({ theme: e.currentTarget.value });
+		this.refs.showdown.renderMD(this.codemirror.getValue());
 	}
 
 	onChangeValue = (codemirror?: any) => this.renderMD(codemirror.getValue());
