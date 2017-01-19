@@ -110,8 +110,8 @@
 			overflow-x: hidden;
 			position: relative;
 
-			-ms-overflow-style: -ms-autohiding-scrollbar;
 
+			-ms-overflow-style: -ms-autohiding-scrollbar;
 			&::-webkit-scrollbar {
 				-webkit-appearance: none
 			}
