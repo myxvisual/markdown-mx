@@ -34,6 +34,10 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 		content: HTMLDivElement;
 	};
 
+	componentDidMount() {
+		this.renderMD(this.props.mdValue);
+	}
+
 	componentWillReceiveProps(nextProps: ShowdownProps) {
 		this.renderMD(nextProps.mdValue);
 	}
@@ -46,8 +50,8 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 			return;
 		};
 		data = data
-			.replace(/-\s\[\s\]/g, `- <input type="checkbox" disabled checked />`)
-			.replace(/-\s\[x\]/g, `- <input type="checkbox" disabled />`);
+			.replace(/-\s\[\s\]/g, `- <input type="checkbox" disabled />`)
+			.replace(/-\s\[x\]/g, `- <input type="checkbox" disabled checked />`);
 		let __html = converter
 			.makeHtml(data) as string;
 		const mathPattern = /<code\s+class="\s*(math)?\s*language-\s*math"\s*>((?!.*<\/code>).*\n*\r*)*<\/code>/g;
@@ -64,7 +68,8 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 	getHTML = () => this.state.__html
 
 	render() {
-		const { className, ...attributes } = this.props;
+		// tslint:disable-next-line:no-unused-variable
+		const { className, mdValue, ...attributes } = this.props;
 		const { __html } = this.state;
 
 		return (
