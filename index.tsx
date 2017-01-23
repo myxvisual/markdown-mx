@@ -1,16 +1,15 @@
 import * as React from "react";
 import { Router } from "react-router";
-import { findDOMNode } from "react-dom";
 import "codemirror/addon/scroll/annotatescrollbar.js";
 import "codemirror/addon/search/matchesonscrollbar.js";
 import "codemirror/addon/search/searchcursor.js";
 import "codemirror/addon/search/match-highlighter.js";
 const keycode = require("keycode");
 
-import CodeMirror from "./components/CodeMirror";
-import Showdown from "./components/Showdown";
-import EWResizer from "./components/EWResizer";
-import Header from "./components/Header";
+import CodeMirror from "./CodeMirror";
+import Showdown from "./Showdown";
+import EWResizer from "./EWResizer";
+import Header from "./Header";
 
 import * as styles from "./index.scss";
 
@@ -310,9 +309,9 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 					start,
 					{ ...start, ch: start.ch + originValueLength }
 				);
-				nextStart = { ...start, ch: start.ch + 16 };
+				nextStart = { ...start, ch: start.ch + 9 };
 
-				codemirror.setSelection(nextStart, { ...end, ch: end.ch + 58 });
+				codemirror.setSelection(nextStart, { ...end, ch: end.ch + 59 });
 				codemirror.focus();
 				break;
 			}

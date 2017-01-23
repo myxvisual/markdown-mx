@@ -1,14 +1,17 @@
 import * as React from "react";
 import { findDOMNode } from "react-dom";
 const showdown = require("showdown");
+showdown.setOption("strikethrough", true);
+showdown.setOption("tables", true);
+showdown.setOption("tablesHeaderId", true);
 const katex = require("katex");
 import "katex/dist/katex.min.css";
 
-import defaultProps from "./defaultProps";
+const defaultProps = {};
 import * as styles from "./index.scss";
 
 interface DataProps {
-	__html?: string;
+	mdValue?: string;
 }
 interface ShowdownProps extends DataProps, React.HTMLAttributes<HTMLDivElement> {}
 interface ShowdownState {
@@ -25,20 +28,23 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 	};
 
 	state: ShowdownState = {
-		__html: this.props.__html || void(0)
+		__html: void(0)
 	};
 	refs: {
 		content: HTMLDivElement;
 	};
 
 	componentWillReceiveProps(nextProps: ShowdownProps) {
-		if (nextProps.__html) {
-			this.setState({ __html: nextProps.__html });
-		}
+		this.renderMD(nextProps.mdValue);
 	}
 
 	renderMD = (data: string) => {
-		if (!data) return;
+		if (!data) {
+			this.setState({
+				__html: ""
+			});
+			return;
+		};
 		data = data
 			.replace(/-\s\[\s\]/g, `- <input type="checkbox" disabled checked />`)
 			.replace(/-\s\[x\]/g, `- <input type="checkbox" disabled />`);
@@ -62,8 +68,8 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 		const { __html } = this.state;
 
 		return (
-			<div ref="content" {...attributes} className={`${styles.c} ${className}`} >
-				<div className={styles.cContent} dangerouslySetInnerHTML={{ __html }}/>
+			<div ref="content" {...attributes} className={`${styles.d} ${className}`} >
+				<div className={`${styles.lContent} ${styles.dContent}`} dangerouslySetInnerHTML={{ __html }}/>
 			</div>
 		);
 	}
