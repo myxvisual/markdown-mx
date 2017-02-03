@@ -191,8 +191,8 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 	}
 
 	onChangeTheme = (e: React.SyntheticEvent<HTMLSelectElement>) => {
-		this.setState({ theme: e.currentTarget.value });
 		this.refs.showdown.renderMD(this.codemirror.getValue());
+		this.setState({ theme: e.currentTarget.value });
 	}
 
 	onChangeValue = (codemirror?: any) => this.renderMD(codemirror.getValue());
@@ -256,7 +256,6 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 			case JSON.stringify(customKey.printPreview):
 			// printPreview();
 				break;
-
 			default:
 				break;
 		}
@@ -389,18 +388,18 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 				</div>
 				<div className={styles.cEditor}>
 					<CodeMirror
-							className={styles.cEditorCodemirror}
-							ref="codemirror"
-							highlightSelectionMatches={{
-								showToken: /\w/,
-								annotateScrollbar: true
-							}}
-							getCodemirror={this.getCodemirror}
-							defaultValue={defaultValue}
-							onChange={this.onChangeValue}
-							theme={theme}
-							mode="markdown"
-						/>
+						className={styles.cEditorCodemirror}
+						ref="codemirror"
+						highlightSelectionMatches={{
+							showToken: /\w/,
+							annotateScrollbar: true
+						}}
+						getCodemirror={this.getCodemirror}
+						defaultValue={defaultValue}
+						onChange={this.onChangeValue}
+						theme={theme}
+						mode="markdown"
+					/>
 					<EWResizer
 						id="ewresizer"
 						onChangePosition={this.resizeEdiotr}

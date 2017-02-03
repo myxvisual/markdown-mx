@@ -12,6 +12,7 @@ import * as styles from "./index.scss";
 
 interface DataProps {
 	mdValue?: string;
+	theme?: "dark" | "light";
 }
 interface ShowdownProps extends DataProps, React.HTMLAttributes<HTMLDivElement> {}
 interface ShowdownState {
@@ -24,22 +25,26 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 	static defaultProps = {
 		...defaultProps,
 		className: "",
-		value: ""
+		value: "",
+		theme: "dark"
 	};
 
 	state: ShowdownState = {
 		__html: void(0)
 	};
+
 	refs: {
 		content: HTMLDivElement;
 	};
 
-	componentDidMount() {
-		this.renderMD(this.props.mdValue);
+	componentWillReceiveProps(nextProps: ShowdownProps) {
+		if (nextProps.mdValue) {
+			this.renderMD(nextProps.mdValue);
+		}
 	}
 
-	componentWillReceiveProps(nextProps: ShowdownProps) {
-		this.renderMD(nextProps.mdValue);
+	componentDidMount() {
+		this.renderMD(this.props.mdValue);
 	}
 
 	renderMD = (data: string) => {
@@ -52,8 +57,7 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 		data = data
 			.replace(/-\s\[\s\]/g, `- <input type="checkbox" disabled />`)
 			.replace(/-\s\[x\]/g, `- <input type="checkbox" disabled checked />`);
-		let __html = converter
-			.makeHtml(data) as string;
+		let __html = converter.makeHtml(data) as string;
 		const mathPattern = /<code\s+class="\s*(math)?\s*language-\s*math"\s*>((?!.*<\/code>).*\n*\r*)*<\/code>/g;
 		const mathDataPattern = /<code\s+class="\s*math?\s*language-\s*math"\s*>((.+\n*\r*)+)<\/code>$/;
 		__html = __html.replace(mathPattern, (...args: any[]): any => {
@@ -69,12 +73,13 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 
 	render() {
 		// tslint:disable-next-line:no-unused-variable
-		const { className, mdValue, ...attributes } = this.props;
+		const { className, mdValue, theme, ...attributes } = this.props;
+		const isDarkTheme = theme === "dark";
 		const { __html } = this.state;
 
 		return (
-			<div ref="content" {...attributes} className={`${styles.d} ${className}`} >
-				<div className={`${styles.lContent} ${styles.dContent}`} dangerouslySetInnerHTML={{ __html }}/>
+			<div ref="content" {...attributes} className={`${styles[isDarkTheme ? "d" : "l"]} ${className}`} >
+				<div className={styles[isDarkTheme ? "dContent" : "lContent"]} dangerouslySetInnerHTML={{ __html }}/>
 			</div>
 		);
 	}
