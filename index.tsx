@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Router } from "react-router";
+import { Router, RouterProps } from "react-router";
 import "codemirror/addon/scroll/annotatescrollbar.js";
 import "codemirror/addon/search/matchesonscrollbar.js";
 import "codemirror/addon/search/searchcursor.js";
@@ -36,7 +36,7 @@ const customKey = {
 };
 
 interface DataProps {}
-interface MarkdownMXProps extends DataProps, Router.RouterProps {
+interface MarkdownMXProps extends DataProps, RouterProps {
 	className?: string;
 }
 interface MarkdownMXState {
