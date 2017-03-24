@@ -10,7 +10,7 @@
 
 	&Content {
 		width: 100%;
-		height: 100%;
+		height: 100%;h
 
 		img {
 			display: block;
@@ -75,6 +75,7 @@
 		hr {
 			margin: 5px 0;
 			border: 0;
+			width: 100%;
 			border-top: 3px solid #F7F7F7;
 		}
 
@@ -204,17 +205,13 @@
 		}
 
 		strong, a, h1, h2, h3, h4, h5, h6 {
-			line-height: 2;
+			line-height: 3;
 			color: #fff;
-		}
-
-		p, a, h1, h2, h3, h4, h5, h6 {
-			margin: 10px 0;
 		}
 
 		p {
 			width: 100%;
-			line-height: 1.8;
+			line-height: 2;
 			font-size: 14px;
 			letter-spacing: 0px;
 			color: #d3d3d3;
@@ -258,6 +255,7 @@
 		hr {
 			margin: 5px 0;
 			border: 0;
+			width: 100%;
 			border-top: 3px solid #1b1b1b;
 		}
 

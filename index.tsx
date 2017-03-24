@@ -85,7 +85,7 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 		};
 		document.addEventListener("keyup", this.handleKeyup);
 		fetch(mdURL).then(res => res.text()).then(
-			text => { this.renderMD(text); setCodemirrorValue(text); }
+			(text: any) => { this.renderMD(text); setCodemirrorValue(text); }
 		);
 		this.syncScroll();
 	}
@@ -114,10 +114,10 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 	}
 
 	download = () => {
-		const FileSaver = require("file-saver");
+		const fileSaver = require("file-saver");
 		const { codemirror } = this;
 		const blob = new Blob([codemirror.getValue()], { type: "text/plain;charset=utf-8" });
-		FileSaver.saveAs(blob, "README.md");
+		fileSaver.saveAs(blob, "README.md");
 	}
 
 	syncScroll = () => {

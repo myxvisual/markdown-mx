@@ -1,17 +1,20 @@
 import * as React from "react";
 import { findDOMNode } from "react-dom";
+
 const showdown = require("showdown");
+require("showdown-highlightjs-extension");
 showdown.setOption("strikethrough", true);
 showdown.setOption("tables", true);
 showdown.setOption("tablesHeaderId", true);
+showdown.setOption("tasklists", true);
+const converter = new showdown.Converter({ extensions: [ "highlightjs" ] });
 const katex = require("katex");
 import "katex/dist/katex.min.css";
 
-const defaultProps = {};
 import * as styles from "./index.scss";
 
 interface DataProps {
-	mdValue?: string;
+	text?: string;
 	theme?: "dark" | "light";
 }
 interface ShowdownProps extends DataProps, React.HTMLAttributes<HTMLDivElement> {}
@@ -19,32 +22,27 @@ interface ShowdownState {
 	__html?: string;
 }
 
-const converter = new showdown.Converter();
-
 export default class Showdown extends React.Component<ShowdownProps, ShowdownState> {
 	static defaultProps = {
-		...defaultProps,
 		className: "",
-		value: "",
+		text: "",
 		theme: "dark"
 	};
 
-	state: ShowdownState = {
-		__html: void(0)
-	};
+	state: ShowdownState = {};
 
 	refs: {
 		content: HTMLDivElement;
 	};
 
 	componentWillReceiveProps(nextProps: ShowdownProps) {
-		if (nextProps.mdValue) {
-			this.renderMD(nextProps.mdValue);
+		if (nextProps.text) {
+			this.renderMD(nextProps.text);
 		}
 	}
 
 	componentDidMount() {
-		this.renderMD(this.props.mdValue);
+		this.renderMD(this.props.text);
 	}
 
 	renderMD = (data: string) => {
@@ -54,9 +52,6 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 			});
 			return;
 		};
-		data = data
-			.replace(/-\s\[\s\]/g, `- <input type="checkbox" disabled />`)
-			.replace(/-\s\[x\]/g, `- <input type="checkbox" disabled checked />`);
 		let __html = converter.makeHtml(data) as string;
 		const mathPattern = /<code\s+class="\s*(math)?\s*language-\s*math"\s*>((?!.*<\/code>).*\n*\r*)*<\/code>/g;
 		const mathDataPattern = /<code\s+class="\s*math?\s*language-\s*math"\s*>((.+\n*\r*)+)<\/code>$/;
@@ -67,19 +62,19 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 		this.setState({ __html });
 	}
 
-	getContent = () => findDOMNode(this.refs.content)
+	getContent = () => findDOMNode(this.refs.content);
 
-	getHTML = () => this.state.__html
+	getHTML = () => this.state.__html;
 
 	render() {
 		// tslint:disable-next-line:no-unused-variable
-		const { className, mdValue, theme, ...attributes } = this.props;
+		const { className, text, theme, ...attributes } = this.props;
 		const isDarkTheme = theme === "dark";
 		const { __html } = this.state;
 
 		return (
 			<div ref="content" {...attributes} className={`${styles[isDarkTheme ? "d" : "l"]} ${className}`} >
-				<div className={styles[isDarkTheme ? "dContent" : "lContent"]} dangerouslySetInnerHTML={{ __html }}/>
+				<div className={styles[isDarkTheme ? "dContent" : "lContent"]} dangerouslySetInnerHTML={{ __html }} />
 			</div>
 		);
 	}
