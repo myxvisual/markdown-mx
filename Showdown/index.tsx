@@ -55,10 +55,12 @@ export default class Showdown extends React.Component<ShowdownProps, ShowdownSta
 		let __html = converter.makeHtml(data) as string;
 		const mathPattern = /<code\s+class="\s*(math)?\s*language-\s*math"\s*>((?!.*<\/code>).*\n*\r*)*<\/code>/g;
 		const mathDataPattern = /<code\s+class="\s*math?\s*language-\s*math"\s*>((.+\n*\r*)+)<\/code>$/;
-		__html = __html.replace(mathPattern, (...args: any[]): any => {
-			 const data = katex.renderToString(args[0].match(mathDataPattern)[1]);
-			 return data;
-		});
+		try {
+			__html = __html.replace(mathPattern, (...args: any[]): any => {
+				const data = katex.renderToString(args[0].match(mathDataPattern)[1]);
+				return data;
+			});
+		} catch (err) {}
 		this.setState({ __html });
 	}
 
