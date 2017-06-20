@@ -1,7 +1,7 @@
 import * as React from "react";
 import MarkdownMX from "../index";
 import * as styles from "./index.scss";
-import "assets/css/material-icons.scss";
+import "assets/styles/material-icons.scss";
 const defaultProps = process.env.NODE_ENV === "development" ? require("./devDefaultProps").default : {};
 
 interface DataProps {
