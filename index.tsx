@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Router, RouterProps } from "react-router";
+import { RouterProps } from "react-router";
 import "codemirror/addon/scroll/annotatescrollbar.js";
 import "codemirror/addon/search/matchesonscrollbar.js";
 import "codemirror/addon/search/searchcursor.js";
@@ -12,6 +12,7 @@ import EWResizer from "./EWResizer";
 import Header from "./Header";
 
 import * as styles from "./index.scss";
+import "assets/styles/material-icons.scss";
 
 const defaultValue = "";
 const mdURL = "https://raw.githubusercontent.com/myxvisual/markdown-mx/master/README.md";
@@ -199,7 +200,7 @@ export default class MarkdownMX extends React.Component<MarkdownMXProps, Markdow
 
 	renderMD = (value: string) => this.refs.showdown.renderMD(value);
 
-	getCodemirror = (codemirror?: any) => { this.codemirror = codemirror; }
+	getCodemirror = (codemirror?: any) => { this.codemirror = codemirror; };
 
 	handleKeyup = (e: KeyboardEvent) => {
 		const { ctrlKey, shiftKey, altKey, keyCode } = e;
